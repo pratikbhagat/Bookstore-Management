@@ -1,0 +1,18 @@
+[Unit]
+Description=Bookstore Management
+Documentation=https://github.com/pratikbhagat/Bookstore-Management/blob/main/README.md
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+UMask=022
+# Run ExecStartPre with root-permissions
+PermissionsStartOnly=true
+ExecStart=/bin/sh -c '/home/pratikbhagat/work-place/gitbucket/Bookstore-Management/main >> /var/log/apps/bookstore-management/app.log  2>&1'
+Restart=on-failure
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target
